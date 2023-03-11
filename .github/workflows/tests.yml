@@ -7,6 +7,7 @@ on:
   pull_request:
   repository_dispatch:
     types: [backend_automation]
+  workflow_dispatch:
 
 env:
   HOMEBREW_DEVELOPER: 1
