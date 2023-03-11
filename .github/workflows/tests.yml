@@ -5,6 +5,8 @@ on:
     branches:
       - master
   pull_request:
+  repository_dispatch:
+    types: [backend_automation]
 
 env:
   HOMEBREW_DEVELOPER: 1
