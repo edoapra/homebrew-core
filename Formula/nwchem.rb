@@ -58,6 +58,9 @@ class Nwchem < Formula
       ENV["SCALAPACK"] = "-L#{Formula["scalapack"].opt_prefix}/lib -lscalapack"
       ENV["SCALAPACK_SIZE"] = "4"
       ENV["USE_64TO32"] = "y"
+      ENV["USE_HWOPT"] = "n"
+      ENV["LIBXC_LIB"] = "#{Formula["libxc"].opt_prefix}/lib"
+      ENV["LIBXC_INCLUDE"] = "#{Formula["libxc"].opt_prefix}/include"
       os = OS.mac? ? "MACX64" : "LINUX64"
       system "make", "nwchem_config", "NWCHEM_MODULES=all python gwmol", "USE_MPI=Y"
       system "make", "NWCHEM_TARGET=#{os}", "USE_MPI=Y"
@@ -73,7 +76,7 @@ class Nwchem < Formula
   test do
     cp_r pkgshare/"QA", testpath
     cd "QA" do
-      ENV["NWCHEM_TOP"] = pkgshare
+      ENV["NWCHEM_TOP"] = testpath
       ENV["NWCHEM_TARGET"] = OS.mac? ? "MACX64" : "LINUX64"
       ENV["NWCHEM_EXECUTABLE"] = "#{bin}/nwchem"
       system "./runtests.mpi.unix", "procs", "0", "dft_he2+", "pyqa3", "prop_mep_gcube", "pspw", "tddft_h2o", "tce_n2"
