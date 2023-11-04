@@ -1,9 +1,9 @@
 class Nwchem < Formula
   desc "High-performance computational chemistry tools"
   homepage "https://nwchemgit.github.io"
-  url "https://github.com/nwchemgit/nwchem/releases/download/v7.2.1-release/nwchem-7.2.1-release.revision-487f8b94-src.2023-10-04.tar.bz2"
-  version "7.2.1"
-  sha256 "ee3f0da0bb8f9b366dc6960d79af61bbfead3290779c77b975b1df020394c6ad"
+  url "https://github.com/nwchemgit/nwchem/releases/download/v7.2.2-release/nwchem-7.2.2-release.revision-74936fb9-src.2023-11-03.tar.bz2"
+  version "7.2.2"
+  sha256 "47f19f2d59e988d33fc4fe067a97da5d15a7ed1167d5acd644dbe84065c19729"
   license "ECL-2.0"
 
   livecheck do
@@ -30,13 +30,6 @@ class Nwchem < Formula
   depends_on "scalapack"
 
   uses_from_macos "libxcrypt"
-
-  # Adds Python 3.12 compatibility.
-  # Remove in next release.
-  patch do
-    url "https://github.com/nwchemgit/nwchem/commit/48fac057df694267c2422adc2b394a0ac0815c02.patch?full_index=1"
-    sha256 "5514e33185ca34c099d26806112b08c582a5f79e000184dfd1b8c9dfdd5cc1d9"
-  end
 
   def install
     pkgshare.install "QA"
